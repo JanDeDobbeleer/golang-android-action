@@ -1,0 +1,13 @@
+# action.yml
+name: 'Golang Android'
+description: 'Build an ARMv7 Android binary using Golang'
+inputs:
+  args:
+    description: 'Build arguments'
+    required: true
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.args }}
