@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 LABEL maintainer "Jan De Dobbeleer"
 
 ENV NDK_VERSION "r26"
-ENV GO_VERSION "1.22.0"
+ENV GO_VERSION "1.22.3"
 ENV GO_BOOTSTRAP_VERSION "1.21.7"
 
 ARG DEBIAN_FRONTEND=noninteractive
