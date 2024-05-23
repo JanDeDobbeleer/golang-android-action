@@ -29,6 +29,12 @@ ENV GOROOT /usr/local/go
 ENV NDK_CC /opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi32-clang
 ENV CGO_ENABLED 1
 
+# setup flags, taken from
+# https://github.com/termux/termux-packages/blob/5bdbfc6b1a134a46e70708706f627e80da2d8d7e/scripts/build/toolchain/termux_setup_toolchain_26b.sh
+ENV CFLAGS "-target armv7-none-linux-androideabi -march=armv7-a -mfpu=neon -mfloat-abi=softfp -mthumb -fstack-protector-strong -Oz"
+ENV CGO_LDFLAGS "-march=armv7-a -fopenmp -Wl,--enable-new-dtags -Wl,--as-needed"
+ENV GO_LDFLAGS="-extldflags=-pie"
+
 # Build Golang for Android
 RUN wget -O go.tgz https://dl.google.com/go/go${GO_VERSION}.src.tar.gz \
     && tar -C /opt -xzf go.tgz \
